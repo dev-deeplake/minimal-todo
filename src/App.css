@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap');
+
 * {
   box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+  /* background-color: #FBFBFD; */
 }
 
 :root {
@@ -59,7 +63,26 @@ div input {
 }
 
 .todo-progressing__title {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  padding: 10px 10px;
+  /* color: rgba(0, 223, 33, 0.949); */
+  /* background-color: rgba(32, 245, 64, 1);
+  border: 5px double  rgba(32, 245, 64, 1); */
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.todo-complete__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  padding: 10px 10px;
 }
 
 .todo-progressing__entry, .todo-complete__entry {
