@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --card-outside-margin: 30px;
+  --card-inside-margin: 20px;
+}
+
+.todo-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-container {
+  min-width: 800px;
+  max-width: 1200px;
+  padding: 40px 30px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-input__title-box, .todo-input__body-box {
+  display: flex;
+  width: 70%;
+  margin-bottom: var(--card-inside-margin);
+}
+
+span {
+  display: flex;
+  width: 160px;
+}
+
+div input {
+  width: 70%;
+}
+
+.todo-input__submit-btn {
+  margin-bottom: var(--card-outside-margin);
+}
+
+.todo-progressing, .todo-complete {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.todo-progressing__title {
+  width: 100%;
+}
+
+.todo-progressing__entry, .todo-complete__entry {
+  min-height: 250px;
+}
+
+.todo-card-container {
+  width: 200px;
+  height: 200px;
+  box-shadow: 4px 4px 4px rbga(0, 0, 0, 0.2);
+}
+
+.hide {
+  display: none;
+}
