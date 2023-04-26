@@ -1,0 +1,26 @@
+.todo-progressing, .todo-complete {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.todo-progressing__title, .todo-complete__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.todo-progressing__entry, .todo-complete__entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  min-height: 250px;
+  gap: 20px;
+  margin: 20px;
+}

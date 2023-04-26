@@ -1,0 +1,88 @@
+:root {
+    --transition-set: background-color 0.3s ease-in-out, border 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+    --vignette-param: 40px 40px 10px rgba(0, 0, 0, 0.1) inset;
+}
+.todo-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 240px;
+    min-height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0px 8px 26px 1px rgba(34, 34, 34, 0.05);
+  }
+  .todo-card__texts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-break: keep-all;
+  }
+  svg {
+    margin-right: 10px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .todo-card__texts-title {
+    font-size: 14pt;
+    font-weight: bold;
+    line-break: keep-all;
+  }
+  .todo-card__texts-body {
+    min-height: 120px;
+    color:rgba(0, 0, 0, 0.6);
+  }
+  
+  .todo-card__btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+  }
+  
+  .todo-card__btns-done-revert, .todo-card__btns-delete {
+    border-radius: 4px;
+    padding: 5px 10px;
+  }
+  
+  .todo-progressing .todo-card__btns-done-revert {
+    border: 2px solid #D6D58E;
+    transition: var(--transition-set);
+  }
+  
+  .todo-progressing .todo-card__btns-done-revert:hover {
+    color: #FBFBFD;
+    background-color: rgba(0, 92, 83, 0.6);
+    border: 2px solid rgba(0, 92, 83, 0.9);
+    box-shadow: var(--vignette-param);
+  }
+  
+  .todo-complete .todo-card__btns-done-revert {
+    border: 2px solid rgba(235, 52, 52, 0.8);
+    transition: var(--transition-set);
+  }
+  
+  .todo-complete .todo-card__btns-done-revert:hover {
+    color: #FBFBFD;
+    background-color: rgba(235, 52, 52, 0.5);
+    border: 2px solid rgba(235, 52, 52, 0.7);
+    box-shadow: var(--vignette-param);
+  }
+  
+  .todo-card__btns-delete {
+    transition: var(--transition-set);
+  }
+  
+  .todo-card__btns-delete:hover {
+    color: #FBFBFD;
+    background-color: rgba(4, 41, 64, 0.6);
+    border: 2px solid rgba(4, 41, 64, 0.8);
+    box-shadow: var(--vignette-param);
+  }
+  

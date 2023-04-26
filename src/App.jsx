@@ -12,8 +12,8 @@ state를 쓸데없이 많이 만드는 건 좋지 않다!(파생 상태) state�
 */
 // useReducer (조금 더 복잡한 상태의 관리)
 import './App.css';
-import "./Complete.css"
-import "./Loading.css"
+import "./TodoCard.css"
+import "./TodoList.css"
 import TodoList from "./TodoList"
 import React, {useState} from 'react'
 import { v4 as uuidv4 } from 'uuid';
@@ -62,7 +62,7 @@ function App() {
   }
 
   const todoDelete = (event) => {
-    const id = event.target.className.split(" ")[1].replace("id-", "")
+    const id = pickThisTodo(event)[0].id
     const changedTodos = todoObj.filter(v => v.id !== id)
     setTodoObj([...changedTodos])
   }
@@ -70,6 +70,10 @@ function App() {
   return (
     <div className="todo-wrap">
       <div className="todo-container">
+        <div className="todo-intro">
+          <h1>Minimal-todo</h1>
+          <p>Simple and minimal todo. Just write a todo and start organizing your life.</p>
+        </div>
         <div className="todo-input">
           <div className="todo-input__title-box">
             <span className="todo-input__title-span">todo title</span>
