@@ -27,16 +27,14 @@ function App() {
   const ingList = todoObj.filter(todo => !todo.isDone)
   const completedList = todoObj.filter(todo => todo.isDone)
 
-
   const resetTodo = () => setTodo(INITIAL_TODO)
   
   const todoChangeTracker =(event) => {
     const {value, name} = event.target
     setTodo({...todo,[name]:value})
   }
-
   
-  const todoSubmitHandler = () => {
+  const todoSubmitHandler = () => { // 신규 todo 등록함수
     const newTodoObj = {
       id: uuidv4(),
       title: todo.title,
@@ -48,20 +46,20 @@ function App() {
     resetTodo()
   }
 
-  const pickThisTodo = (event) => {
+  const pickThisTodo = (event) => { // event가 걸린 todo object 뽑아오기
     const id = event.target.className.split(" ")[1].replace("id-", "")
     const thisTodo = todoObj.filter(v => v.id === id)
     return thisTodo
   }
 
-  const statusChangeHandler = (event) => {
+  const statusChangeHandler = (event) => { // todo의 isDone 속성 변경 함수
     const thisTodo = pickThisTodo(event)[0]
     const changedTodo = {...thisTodo, isDone: !(thisTodo.isDone)}
     const changedTodos = todoObj.filter(v => v.id !== thisTodo.id)
     setTodoObj([...changedTodos, changedTodo])
   }
 
-  const todoDelete = (event) => {
+  const todoDelete = (event) => { // todo 삭제 함수
     const id = pickThisTodo(event)[0].id
     const changedTodos = todoObj.filter(v => v.id !== id)
     setTodoObj([...changedTodos])
@@ -89,9 +87,7 @@ function App() {
               value={todo.body}
             ></input>          
           </div>
-          <button className="todo-input__submit-btn" onClick={() => {
-            todoSubmitHandler()
-          }}>add this todo</button>
+          <button className="todo-input__submit-btn" onClick={todoSubmitHandler}>add this todo</button>
         </div>
         <TodoList title="Progressing" list={ingList} changeStatus={statusChangeHandler} onDelete={todoDelete} />
         <TodoList title="Complete" list={completedList} changeStatus={statusChangeHandler} onDelete={todoDelete} />
