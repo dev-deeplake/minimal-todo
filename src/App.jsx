@@ -16,13 +16,13 @@ import "./Complete.css"
 import "./Loading.css"
 import TodoList from "./TodoList"
 import React, {useState} from 'react'
+import { v4 as uuidv4 } from 'uuid';
 
 const INITIAL_TODO = {title:"", body:""}
 
 function App() {
   const [todoObj, setTodoObj] = useState([])
   const [todo, setTodo] = useState(INITIAL_TODO)
-  const [todoHidden, setTodoHidden] = useState({title:"", body:""})
 
   const ingList = todoObj.filter(todo => !todo.isDone)
   const completedList = todoObj.filter(todo => todo.isDone)
@@ -38,30 +38,34 @@ function App() {
   
   const todoSubmitHandler = () => {
     const newTodoObj = {
-      id: todoObj.length,
+      id: uuidv4(),
       title: todo.title,
       body: todo.body,
       isDone: false
     }
     // 불변성 유지
     setTodoObj((prev)=> [...prev, newTodoObj])
-    setTodoHidden({...newTodoObj})
     resetTodo()
   }
 
-  const statusChangeHandler = () => {
-    console.log(todoHidden.isDone)
-    const changedTodo = {...todoHidden, isDone: !(todoHidden.isDone)}
-    setTodoHidden({...changedTodo})
-    const changedTodos = todoObj.filter(v => v.id !== todoHidden.id)
+  const pickThisTodo = (event) => {
+    const id = event.target.className.split(" ")[1].replace("id-", "")
+    const thisTodo = todoObj.filter(v => v.id === id)
+    return thisTodo
+  }
+
+  const statusChangeHandler = (event) => {
+    const thisTodo = pickThisTodo(event)[0]
+    const changedTodo = {...thisTodo, isDone: !(thisTodo.isDone)}
+    const changedTodos = todoObj.filter(v => v.id !== thisTodo.id)
     setTodoObj([...changedTodos, changedTodo])
   }
 
-  const todoDelete = () => {
-    const changedTodos = todoObj.filter(v => v.id !== todoHidden.id)
+  const todoDelete = (event) => {
+    const id = event.target.className.split(" ")[1].replace("id-", "")
+    const changedTodos = todoObj.filter(v => v.id !== id)
     setTodoObj([...changedTodos])
   }
-
 
   return (
     <div className="todo-wrap">
@@ -69,14 +73,14 @@ function App() {
         <div className="todo-input">
           <div className="todo-input__title-box">
             <span className="todo-input__title-span">todo title</span>
-            <input name="title" className="todo-input__title-input" type="text" 
+            <input name="title" className="todo-input__title-input" type="text" placeholder='Write a title of your todo'
               onChange={todoChangeTracker}
               value={todo.title}
             ></input>
           </div>
           <div className="todo-input__body-box">
             <span className="todo-input__body-span">todo what?</span>
-            <input name="body" className="todo-input__body-input" type="text" 
+            <input name="body" className="todo-input__body-input" type="text" placeholder='give some specific memos on your todo'
               onChange={todoChangeTracker}
               value={todo.body}
             ></input>          
