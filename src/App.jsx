@@ -75,14 +75,14 @@ function App() {
         <div className="todo-input">
           <div className="todo-input__title-box">
             <span className="todo-input__title-span">todo title</span>
-            <input name="title" className="todo-input__title-input" type="text" placeholder='Write a title of your todo'
+            <input name="title" className="todo-input__title-input" type="text" placeholder='Write a title of your todo' autoComplete='off'
               onChange={todoChangeTracker}
               value={todo.title}
             ></input>
           </div>
           <div className="todo-input__body-box">
             <span className="todo-input__body-span">todo what?</span>
-            <input name="body" className="todo-input__body-input" type="text" placeholder='give some specific memos on your todo'
+            <input name="body" className="todo-input__body-input" type="text" placeholder='give some specific memos on your todo' autoComplete='off'
               onChange={todoChangeTracker}
               value={todo.body}
             ></input>          
